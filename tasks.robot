@@ -11,27 +11,30 @@ Library             RPA.FileSystem
 
 
 *** Variables ***
-${TARGET_FILE}              ${CURDIR}${/}downloads${/}challenge.xlsx
+${TARGET_FILE}              ${CURDIR}${/}downloads${/}customers.xlsx
 ${URL_RPACHALLENGE}         http://rpachallenge.com/
 ${PATH_CHALLENGE_FILE}      http://rpachallenge.com/assets/downloadFiles/challenge.xlsx
 
 
 *** Tasks ***
-Complete the challenge
-    Start the challenge
+Add Customers From List
+    Get Excel File with Customer Info
+    Open RPA Challenge Website
     Fill the forms
     Collect the results
     [Teardown]    Teardown
 
 
 *** Keywords ***
-Start the challenge
-    Open Browser
-    New Page    ${URL_RPACHALLENGE}
+Get Excel File with Customer Info
     RPA.HTTP.Download
     ...    ${PATH_CHALLENGE_FILE}
     ...    target_file=${TARGET_FILE}
     ...    overwrite=True
+
+Open RPA Challenge Website
+    Open Browser
+    New Page    ${URL_RPACHALLENGE}
     Click    button
 
 Fill the forms
