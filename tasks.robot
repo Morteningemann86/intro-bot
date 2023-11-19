@@ -7,12 +7,14 @@ Documentation       Robot to solve the first challenge at rpachallenge.com,
 Library             RPA.Browser.Playwright
 Library             RPA.Excel.Files
 Library             RPA.HTTP
-Library    RPA.FileSystem
+Library             RPA.FileSystem
+
 
 *** Variables ***
-${TARGET_FILE}    ${CURDIR}${/}downloads${/}challenge.xlsx
-${URL_RPACHALLENGE}    http://rpachallenge.com/
-${PATH_CHALLENGE_FILE}    http://rpachallenge.com/assets/downloadFiles/challenge.xlsx
+${TARGET_FILE}              ${CURDIR}${/}downloads${/}challenge.xlsx
+${URL_RPACHALLENGE}         http://rpachallenge.com/
+${PATH_CHALLENGE_FILE}      http://rpachallenge.com/assets/downloadFiles/challenge.xlsx
+
 
 *** Tasks ***
 Complete the challenge
@@ -26,7 +28,7 @@ Complete the challenge
 Start the challenge
     Open Browser
     New Page    ${URL_RPACHALLENGE}
-    RPA.HTTP.Download    
+    RPA.HTTP.Download
     ...    ${PATH_CHALLENGE_FILE}
     ...    target_file=${TARGET_FILE}
     ...    overwrite=True
