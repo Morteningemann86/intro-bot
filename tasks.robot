@@ -8,7 +8,7 @@ Library             RPA.Browser.Playwright
 Library             RPA.Excel.Files
 Library             RPA.HTTP
 Library             RPA.FileSystem
-
+Library             libraries/date_utils.py
 
 *** Variables ***
 ${TARGET_FILE}              ${CURDIR}${/}downloads${/}customers.xlsx
@@ -61,7 +61,9 @@ Fill and submit the form
     Click    input[type=submit]
 
 Collect the results
-    Take Screenshot    ${CURDIR}${/}receipt${/}screenshot-{index}
+    ${first_day}    First Day Of Month Relative To Today    1
+    ${last_day}    Last Day Of Month Relative To Today    1
+    Take Screenshot    ${CURDIR}${/}receipt${/}Receipt for period ${first_day} to ${last_day} - {index}
     Close Browser
 
 Teardown
